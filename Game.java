@@ -8,10 +8,11 @@ import java.util.concurrent.TimeUnit;
 public class Game {
     static final int BLACKJACK = 21; //Blackjack limit for determining if game is over
     private static final int MIN_BET = 2; //Minimum bet amount allowed for the player
+    private static final int DEALER_TURN_LIMIT = 17; //Once dealer reaches 17, his/her turn stops
     private Deck deck = new Deck(); //New deck of cards
     private final Hand dealer = new Hand(); //Dealer's hand
     private final Hand player = new Hand(); //Player's hand
-    private final Scanner input = new Scanner(System.in); //Process user input
+    private final Scanner input = new Scanner(System.in); //Scanner object for processing input
     private boolean askPlayer; //Determines if we need to ask player for user input on hit/stand
     private float bankRoll; //Amount of money that can be used to bet in game
     private final float initialBankRoll; //Initial amount of money set aside to play the game
@@ -19,6 +20,8 @@ public class Game {
 
     /**
      * Initializes a new blackjack game with a user-specified value of bankRoll in float type
+     * We also set the initialBankRoll value equal to bankRoll, so this value can be leveraged
+     * in later part for calculating total earnings or losses at the end of game.
      *
      * @throws IllegalArgumentException if bankRoll is less than the value of MIN_BET
      */
@@ -29,6 +32,7 @@ public class Game {
 
     /**
      * Sets bankroll amount by asking for user input
+     *
      * @throws InputMismatchException if user input for bankroll is not a valid float type
      * @throws IllegalArgumentException if bankRoll is less than the value of MIN_BET
      */
@@ -59,6 +63,7 @@ public class Game {
 
     /**
      * Private validation method for bankRoll to ensure amount is greater than MIN_BET
+     *
      * @param bankRoll  Amount of money set aside to play the game in float type
      * @return  bankroll amount in float type
      * @throws IllegalArgumentException if bankRoll is less than the value of MIN_BET
@@ -79,6 +84,7 @@ public class Game {
 
     /**
      * Getter method for bankRoll amount
+     *
      * @return  bankRoll in float type
      */
     public float getBankRoll() {
@@ -228,7 +234,7 @@ public class Game {
      */
     void dealerTurn() throws InterruptedException {
         showHandsForBlackJack(true);
-        while(!player.isBust() && dealer.getTotalHandValue() < 17){
+        while(!player.isBust() && dealer.getTotalHandValue() < DEALER_TURN_LIMIT){
             System.out.println("Dealer Takes a Card!\n");
             TimeUnit.SECONDS.sleep(2);
             dealer.dealCards(deck, 1);
@@ -273,7 +279,7 @@ public class Game {
     /**
      * boolean to determine if user wants to play another round based on user input
      *
-     * @return boolean to determine if another round of game should be played
+     * @return boolean for whether user input equals YES
      */
     boolean playAnotherRound(){
         String keepPlaying;

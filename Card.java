@@ -40,7 +40,7 @@ public class Card implements Comparable<Card> {
      * @throws IllegalStateException if card name value is null
      */
     private void setCardName(CardName name) throws IllegalStateException {
-        if (suit == null) {
+        if (name == null) {
             throw new IllegalStateException("Exception -- Card name cannot " +
                     "be null.");
         }

@@ -22,7 +22,7 @@ public class Hand extends Deck {
      * @return hand    arraylist of Card objects
      */
     @Override
-    public ArrayList<Card> getDeck() {
+    ArrayList<Card> getDeck() {
         return this.hand;
     }
 
