@@ -32,3 +32,6 @@ III. Hand Class
 IV. Game Class
 * Included added factors such as bankroll, bet, and timeUnit delay to simulate a real Blackjack game
 * Added appropriate exception handling as needed, and sought to maximize playability of the game even when errors occur
+
+### Potential Ways to Improve Our Code
+* Follow the Clean Code concepts and refactor our Game class. We could break the Bankroll and bet methods into its own class. By doing so, we can condense our instance variables currently in our Game class, and the change could make our classes more extendable. Other games could also leverage the new class to implement betting capabilities.
