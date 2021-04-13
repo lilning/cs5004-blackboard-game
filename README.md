@@ -22,11 +22,11 @@ II. Deck Class
 III. Hand Class
 * Constructor to initialize an empty arraylist
 * Added the following methods to faciliate with the Blackjack Game:
->>* dealCards(): Deals cards from the Deck to the given Hand object
->>* returnCard(): Returns dealt cards from the hand back to the deck
->>* calculateHandValue(): calculates total hand value
->>* getTotalHandValue(): getter method to be used in Blackjack class
->>* isBust(): returns boolean for whether the hand value is over 21
+>* dealCards(): Deals cards from the Deck to the given Hand object
+>* returnCard(): Returns dealt cards from the hand back to the deck
+>* calculateHandValue(): calculates total hand value
+>* getTotalHandValue(): getter method to be used in Blackjack class
+>* isBust(): returns boolean for whether the hand value is over 21
 * Added appropriate exception handling as needed
 
 IV. Game Class
